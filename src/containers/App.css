@@ -1,0 +1,72 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #2d0858;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(500deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+
+/* .App-logo {
+  animation: cssAnimation_0 3000ms infinite linear 395ms;
+}
+
+@keyframes cssAnimation_0 {
+  to {
+    transform: rotate(360deg) translate(0px, 0px);
+  }
+}
+
+ */
+
+ .App-logo{
+  width: 200px;
+  height: 200px;
+  
+ }
+
+ #yellow {
+  background: linear-gradient(to left, rgb(75, 64, 64), rgba(0, 0, 500, 10%), black, grey);
+ }
+
+ @font-face {
+  font-family: 'Technology';
+  src: url('Technology-Bold.woff2') format('woff2'),
+      url('Technology-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
