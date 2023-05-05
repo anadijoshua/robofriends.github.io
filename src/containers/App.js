@@ -1,47 +1,75 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
+
+//Components
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
-import './App.css';
 import ScrollView from '../components/ScrollView';
 import ErrorBounding from '../components/ErrorBounding';
-import {robots} from '../components/robots';
 
-class App extends Component {
+//React Redux
+import {connect} from 'react-redux';
+
+//action
+import { setSearchField } from '../components/action';
+
+//Robots Database
+// import  {robots} from '../components/robots';
+
+//CSS
+import './App.css'
+
+
+const mapStateToProps = (state) => {
+   return{
+     searchField: state.searchField
+   }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+    }
+}
+
+class App extends Component{
     constructor() {
         super();
-        this.state = {
-            robots: robots,
-            searchfield: ''
-        }
-    }
 
-    componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json())
-        .then(users => this.setState({robots: users}))
-    }
-    onSearchChange = (event) => {
-       this.setState({searchfield :event.target.value});
-    }
+        this.state = {
+            robots: []
+            
+        }
+ }
+
+ componentDidMount(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(users =>  this.setState({ robots: users}))
+ }
+
+
+
 
     render() {
-        const filtered = this.state.robots.filter(robot => {
-           return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        const {robots} = this.state;
+        const {searchField, onSearchChange} = this.props;
+        const filtered = robots.filter(robot => {
+            return robot.name.toLowerCase().includes(searchField.toLowerCase());
         })
-
         return(
-            <div className="tc">
-                <h1 style={{fontFamily:'Technology', fontSize: '60px'}}>ROBO FRIENDS</h1>
-                <SearchBox searchChange = {this.onSearchChange} />
+            <div className='tc'>
+                <h1 id='robo'>ROBO FRIENDS</h1>
+                <SearchBox searchChange = {onSearchChange}/>
                 <ScrollView>
                     <ErrorBounding>
-                       <CardList robots= {filtered} />
+                         <CardList robots = {filtered} /> 
                     </ErrorBounding>
                 </ScrollView>
-               
+                
             </div>
         )
     }
 }
 
-export default App;
+
+export default connect(mapStateToProps, mapDispatchToProps) (App);

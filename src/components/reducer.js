@@ -1,13 +1,15 @@
-import {CREATE_SEARCH_FIELD} from './constant';
+import {CHANGE_SEARCHFIELD} from './constant';
 
 const initialState = {
-    searchField: '' 
+    searchField: ''
 }
 
 export const searchRobots = (state = initialState, action = {}) => {
     switch(action.type){
-        case CREATE_SEARCH_FIELD:
-        return   Object.assign({}, state, {searchField: action.payload});
+        case CHANGE_SEARCHFIELD:
+            return Object.assign({}, state, {searchField: action.payload});
+
+            default:
+                return state
     }
-    return state
 } 

@@ -1,9 +1,8 @@
 import React from "react";
 
-
 const ScrollView = (props) => {
     return(
-        <div style= {{background: 'grey', height: '65vh', overflowY: 'scroll', margin: '20px' }} >
+        <div style={{background: 'grey', margin: '60px', overflowY : 'scroll', height: '70vh'}}>
             {
                 props.children
             }
@@ -11,4 +10,5 @@ const ScrollView = (props) => {
     )
 }
 
-export default ScrollView;
+
+export default ScrollView; 
