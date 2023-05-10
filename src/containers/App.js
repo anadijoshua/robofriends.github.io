@@ -13,7 +13,7 @@ import {connect} from 'react-redux';
 import { setSearchField } from '../components/action';
 
 //Robots Database
-import  {robots} from '../components/robots';
+// import  {robots} from '../components/robots';
 
 //CSS
 import './App.css'
@@ -46,7 +46,7 @@ class App extends Component{
     .then(response => response.json())
     .then(users =>  this.setState({ robots: users}))
  }
-
+  
 
 
 
